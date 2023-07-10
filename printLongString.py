@@ -1,2 +1,3 @@
-fourth = input('Year: ')[3]
-print(fourth)
+numbers = list('cba345A')
+numbers.sort()
+print(numbers)
