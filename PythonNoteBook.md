@@ -66,6 +66,8 @@
 
 1. **Overview**
 
+Python基础教程第二版P33-43
+
 2. **Content**
    
     1. in运算符检查一个对象是否为某个序列的成员
@@ -91,13 +93,94 @@
        6. pop方法移除列表一个元素（默认为最后一个）并返回该元素的值  
        pop方法可实现栈，append方法实现入栈，pop实现出栈；用类似的方法可实现队列
        7. remove方法移除列表中第一个匹配项
-       8. reserve将列表中元素反向
+       8. reverse将列表中元素反向
        9. sort方法对列表排序（按照ASCII码升序排序）但不返回值  
        sorted函数可以返回值  
        sort方法有两个可选参数key、reserve。key参数指定排序的关键字（或者说，创造一个键）；reserve参数为真，则反向排序
 
-      7. 用逗号分隔一些值就自动创建了一个元组  
+      1. 用逗号分隔一些值就自动创建了一个元组  
       空元组用空圆括号表示  
       一个值的元组必须加个逗号
 
-      8. tuple函数将一个序列转换成元组
+      2. tuple函数将一个序列转换成元组
+   
+## Edit Time: [2023.7.12]
+
+1. **Overview**
+
+Python基础教程第二版P44-54
+
+2. **Content**
+   
+   1. 字符串不可改变
+
+   2. 字符串格式化：使用%。%左边是格式化字符串，右边是希望格式化的值，可以是一个字符串或者数字，如果需要多个值则利用元组。例如，  
+   `format = "Hello, %s"`  
+   `values = ('world',)`  
+   `print(format % values)`  
+   输出结果为`Hello, world`
+
+   3. 如果使用列表或者其他序列代替元组，那么序列会被解释为一个值（字符串）。只有元组和字典才会格式化一个以上的值。
+   
+   4. 格式化字符出如果有%，则需使用%%
+
+   5. 格式化浮点数可用`%.4f`形式，4表示保留四位小数，f表示浮点数
+
+   6. 格式化还可以使用string模块的模板字符串。例如，  
+   ```
+   from string import Template
+   s = Template('$x, glorious $x!')
+   a = s.substitute(x = 'slurm')
+   print(a)
+   ```
+   输出结果为`slurm, glorious slurm!`  
+   substitute方法并不直接作用于s，而是以返回值来传递信息
+
+   7. 美元符号可以用$$表示
+
+   8. 替换字段如果是字符一部分，需使用`${x}`
+
+   9. 字段宽度指的是转换后的值所保留的最小字符个数；  
+      对于数字来说，精度指的是结果中小数位数<span style="color:red;">（如果不指定浮点数精度，浮点数默认6位小数）</span>；  
+      对于字符串来说，精度指的是转换后所能包含的最大字符数  
+      用*表示字段宽度和精度，数值会从元组参数中读出  
+      <span style="color:red;">如果精度大于字段宽度，则自动扩展字段宽度</span>
+
+   10. 在字段宽度和精度前可以放置一个标表，可以是+、-、0、空格。+表示不管正负一律显示符号；-表示左对齐；0表示用0填充；空格表示在正数前加上空格
+
+   11. 字符串方法：
+     
+         1. 查找子字符串，返回最左端索引。如果没找到则返回-1  
+         与in操作符的区别在于，in操作符只能查找单个字符  
+         ```
+         subject = 'Get rich now!'
+         subject.find('!!!',0,16)
+         ```
+         选择了起点和终点参数（包含第一个索引，不包含第二个）  
+
+         2. join方法将列表或者元组中的元素（必须是字符）连成字符串。语法如下：  
+         `string = seperator.join(iterable)`  
+         其中seperator是分隔符，可以是一个字符或者字符串，iterable是迭代对象  
+
+         3. split方法是join方法的逆方法，将字符串分割成列表。语法如下：  
+         `listOfStrings = string.split(seperator, maxsplit)`  
+         其中maxsplit是最大分割次数。seperator参数默认为空格
+
+         4. lower方法返回字符串的小写字母版
+   
+         5. replace方法：`string.replace('a', 'b')`,将string中所有的a替换成b
+
+         6. strip方法：`newString = string.strip(characters)`,其中characters为开头和结尾指定的需要去除的字符，默认为空白字符（空格、换行符、制表符）
+
+         7. translate方法：同样是替换。有两个参数，第一个参数是一张转换表（实际上是一个字符串），第二个参数可选，用来指定需要删除的字符<span style="color:red;">（Python3.4之后不再有可选参数）</span>  
+         转换表的生成可以利用内置函数str.maketrans，格式如下：`table = str.maketrans('x','y')`，其中x和y是等长的字符串，对于字符串中的每一个字符，用y中的字符替换x中的字符
+
+## Edit Time: [2023.7.13]
+
+1. **Overview**
+
+Python基础教程第二版P55
+
+2. **Content**
+   
+   1. 
